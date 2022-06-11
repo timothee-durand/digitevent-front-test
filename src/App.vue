@@ -4,6 +4,7 @@ import { ref } from "vue";
 import type { Ref } from "vue";
 import type { NumbersApiResponse } from "@/types/api";
 import FactCard from "@/components/FactCard.vue";
+import LogList from "@/components/LogList.vue";
 
 const mathFact: Ref<NumbersApiResponse> = ref({
   text: "",
@@ -46,6 +47,7 @@ getNewRandomDateFact();
         <template v-slot:body><p>{{ dateFact.text }}</p></template>
       </FactCard>
     </div>
+    <LogList/>
   </main>
 
 
@@ -64,7 +66,9 @@ getNewRandomDateFact();
 
   main {
     display: grid;
-    grid-template-columns: 300px 1fr;
+    width: 100%;
+    grid-template-columns: 45% 1fr;
+    gap: 50px;
     min-height: 500px;
     .fact-cards {
       display: grid;
