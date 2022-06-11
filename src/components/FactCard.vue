@@ -1,14 +1,18 @@
 <script lang="ts" setup>
 import DownloadButton from "@/components/DownloadButton.vue";
-
+import type { FactType } from "@/types/api";
+import { capitalize } from "vue";
 const props = defineProps<{
-  factType: string
+  factType: FactType;
 }>();
 </script>
 <template>
   <div class="fact-card">
     <div class="fact-card__header">
-      <p>A cool <strong class="fact-card__fact-type">{{ props.factType }}</strong> Fact</p>
+      <p>
+        A cool
+        <strong class="fact-card__fact-type">{{ capitalize(factType) }}</strong> Fact
+      </p>
       <DownloadButton @download="$emit('newFact')" />
     </div>
 

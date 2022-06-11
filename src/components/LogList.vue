@@ -4,7 +4,7 @@
       <p class="log-list__title">Logs</p>
     </div>
     <div class="log-list__body">
-      <slot name="logs"/>
+      <slot name="logs" />
     </div>
   </div>
 </template>
@@ -13,6 +13,8 @@
 .log-list {
   background-color: var(--white);
   padding: 30px;
+  max-height: 70vh;
+  overflow-y: scroll;
 
   &__header {
     margin-bottom: 20px;
