@@ -2,7 +2,7 @@
 import DownArrowIcon from "@/components/icons/DownArrowIcon.vue";
 </script>
 <template>
-  <button type="button" @click.prevent="$emit('click')" class="download-button"><DownArrowIcon/></button>
+  <button type="button" @click.prevent="$emit('download')" class="download-button"><DownArrowIcon/></button>
 </template>
 
 <style lang="scss" scoped>

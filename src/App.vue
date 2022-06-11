@@ -3,7 +3,6 @@ import { getRandomDateFact, getRandomMathFact } from "@/api";
 import { ref } from "vue";
 import type { Ref } from "vue";
 import type { NumbersApiResponse } from "@/types/api";
-import DownloadButton from "@/components/DownloadButton.vue";
 import FactCard from "@/components/FactCard.vue";
 
 const mathFact: Ref<NumbersApiResponse> = ref({
@@ -19,82 +18,59 @@ const dateFact: Ref<NumbersApiResponse> = ref({
   type: "date" as const
 });
 
-getRandomMathFact().then((data) => {
-  mathFact.value = data;
-});
+const getNewRandomMathFact = (): void => {
+  getRandomMathFact().then((data) => {
+    mathFact.value = data;
+  });
+};
 
-getRandomDateFact().then((data) => {
-  dateFact.value = data;
-});
+const getNewRandomDateFact = (): void => {
+  getRandomDateFact().then((data) => {
+    dateFact.value = data;
+  });
+};
+
+getNewRandomMathFact();
+getNewRandomDateFact();
+
+
 </script>
 
 <template>
   <main>
-    <p>{{ mathFact.text }}</p>
-    <p>{{ dateFact.text }}</p>
-    <DownloadButton/>
+    <div class="fact-cards">
+      <FactCard fact-type="Math" @newFact="getNewRandomMathFact">
+        <template v-slot:body><p>{{ mathFact.text }}</p></template>
+      </FactCard>
+      <FactCard fact-type="Date" @newFact="getNewRandomDateFact()">
+        <template v-slot:body><p>{{ dateFact.text }}</p></template>
+      </FactCard>
+    </div>
   </main>
+
+
 </template>
 
-<style>
+<style lang="scss">
 @import "./assets/base.css";
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  display: flex;
+  max-width: 1200px;
+  min-height: 100vh;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
 
-  font-weight: normal;
-}
-
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-}
-
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
-
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
+  main {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
+    grid-template-columns: 300px 1fr;
+    min-height: 500px;
+    .fact-cards {
+      display: grid;
+      gap : 50px;
+    }
   }
 
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
 }
 </style>
