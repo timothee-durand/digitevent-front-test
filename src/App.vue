@@ -104,6 +104,7 @@ getNewRandomDateFact();
 
     @media (min-width: 700px) {
       min-height: 500px;
+      height: 70vh;
       grid-template-columns: 45% 50%;
     }
   }

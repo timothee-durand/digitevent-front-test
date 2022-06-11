@@ -14,6 +14,7 @@
   background-color: var(--white);
   padding: 30px;
   width: 100%;
+  overflow-y: scroll;
 
   &__header {
     margin-bottom: 20px;
@@ -22,11 +23,6 @@
   &__title {
     font-weight: 700;
     text-decoration: underline;
-  }
-
-  @media (min-width: 700px) {
-    max-height: 70vh;
-    overflow-y: scroll;
   }
 }
 </style>
