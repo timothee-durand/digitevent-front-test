@@ -3,6 +3,7 @@ import { getRandomDateFact, getRandomMathFact } from "@/api";
 import { ref } from "vue";
 import type { Ref } from "vue";
 import type { NumbersApiResponse } from "@/types/api";
+import DownloadButton from "@/components/DownloadButton.vue";
 
 const mathFact: Ref<NumbersApiResponse> = ref({
   text: "",
@@ -30,6 +31,7 @@ getRandomDateFact().then((data) => {
   <main>
     <p>{{ mathFact.text }}</p>
     <p>{{ dateFact.text }}</p>
+    <DownloadButton/>
   </main>
 </template>
 
