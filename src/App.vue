@@ -4,18 +4,19 @@ import { ref } from "vue";
 import type { Ref } from "vue";
 import type { NumbersApiResponse } from "@/types/api";
 import DownloadButton from "@/components/DownloadButton.vue";
+import FactCard from "@/components/FactCard.vue";
 
 const mathFact: Ref<NumbersApiResponse> = ref({
   text: "",
   number: 0,
   found: false,
-  type: "math" as const,
+  type: "math" as const
 });
 const dateFact: Ref<NumbersApiResponse> = ref({
   text: "",
   number: 0,
   found: false,
-  type: "date" as const,
+  type: "date" as const
 });
 
 getRandomMathFact().then((data) => {

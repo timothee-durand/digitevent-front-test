@@ -11,11 +11,11 @@ import DownArrowIcon from "@/components/icons/DownArrowIcon.vue";
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  background-color: #ff6969;
-  border-radius: 50px;
-  border: 1px solid black;
+  width: var(--button-size);
+  height: var(--button-size);
+  background-color: var(--soft-red);
+  border-radius: var(--button-size);
+  border: 1px solid var(--black);
   cursor: pointer;
 
   > svg {
