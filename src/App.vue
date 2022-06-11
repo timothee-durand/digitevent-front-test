@@ -1,24 +1,40 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import { getRandomDateFact, getRandomMathFact } from "@/api";
+import { ref } from "vue";
+import type { Ref } from "vue";
+import type { NumbersApiResponse } from "@/types/api";
+
+const mathFact: Ref<NumbersApiResponse> = ref({
+  text: "",
+  number: 0,
+  found: false,
+  type: "math" as const,
+});
+const dateFact: Ref<NumbersApiResponse> = ref({
+  text: "",
+  number: 0,
+  found: false,
+  type: "date" as const,
+});
+
+getRandomMathFact().then((data) => {
+  mathFact.value = data;
+});
+
+getRandomDateFact().then((data) => {
+  dateFact.value = data;
+});
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
   <main>
-    <TheWelcome />
+    <p>{{ mathFact.text }}</p>
+    <p>{{ dateFact.text }}</p>
   </main>
 </template>
 
 <style>
-@import './assets/base.css';
+@import "./assets/base.css";
 
 #app {
   max-width: 1280px;
