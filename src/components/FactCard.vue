@@ -2,7 +2,7 @@
 import DownloadButton from "@/components/DownloadButton.vue";
 import type { FactType } from "@/types/api";
 import { capitalize } from "vue";
-const props = defineProps<{
+defineProps<{
   factType: FactType;
 }>();
 </script>
@@ -13,7 +13,7 @@ const props = defineProps<{
         A cool
         <strong class="fact-card__fact-type">{{ capitalize(factType) }}</strong> Fact
       </p>
-      <DownloadButton @download="$emit('newFact')" />
+      <DownloadButton @click.prevent="$emit('newFact')" />
     </div>
 
     <div class="fact-card__body">
@@ -22,7 +22,7 @@ const props = defineProps<{
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .fact-card {
   display: grid;
   grid-template-rows: 40px minmax(max-content, 1fr);
@@ -38,6 +38,7 @@ const props = defineProps<{
     align-items: center;
     justify-content: space-between;
   }
+
   .fact-card__fact-type {
     font-weight: 700;
     text-decoration: underline;
@@ -46,6 +47,9 @@ const props = defineProps<{
   .fact-card__body {
     padding: 0 10px;
     align-items: center;
+    font-weight: 700;
+    word-break: break-word;
+    white-space: break-spaces;
   }
 }
 </style>

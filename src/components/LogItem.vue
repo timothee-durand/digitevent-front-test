@@ -19,6 +19,7 @@ defineProps<{
 <style lang="scss" scoped>
 .log-item {
   margin-block-end: 20px;
+
   &__hour,
   &__type {
     font-weight: 700;

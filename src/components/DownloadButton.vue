@@ -4,7 +4,6 @@ import DownArrowIcon from "@/components/icons/DownArrowIcon.vue";
 <template>
   <button
     type="button"
-    @click.prevent="$emit('download')"
     class="download-button"
   >
     <DownArrowIcon />
@@ -21,7 +20,7 @@ import DownArrowIcon from "@/components/icons/DownArrowIcon.vue";
   height: var(--button-size);
   background-color: var(--soft-red);
   border-radius: var(--button-size);
-  border: 1px solid var(--black);
+  border: 2px solid var(--black);
   cursor: pointer;
 
   > svg {

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { getRandomDateFact, getRandomMathFact } from "@/api";
-import { computed, ref } from "vue";
+import { ref } from "vue";
 import type { Ref } from "vue";
 import type { NumbersApiResponse } from "@/types/api";
 import FactCard from "@/components/FactCard.vue";
@@ -80,24 +80,31 @@ getNewRandomDateFact();
 
 #app {
   display: flex;
-  max-width: 1200px;
-  min-height: 100vh;
-  padding: 20px;
   justify-content: center;
   align-items: center;
 
+  min-height: 100vh;
+  padding: 20px;
+
   main {
     display: grid;
+    grid-template-columns: 100%;
+    max-width: 1000px;
     width: 100%;
-    grid-template-columns: 45% 50%;
     gap: 50px;
-    min-height: 500px;
+
 
     .fact-cards {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       gap: 50px;
+      width: 100%;
+    }
+
+    @media (min-width: 700px) {
+      min-height: 500px;
+      grid-template-columns: 45% 50%;
     }
   }
 }
